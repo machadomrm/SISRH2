@@ -1,0 +1,50 @@
+<body>
+    <!-- #F5E2E2 F5D6D6 -->
+
+
+
+    <form action="enviar_os_ext.php" method="post" name="aform">
+
+        <!-- Formulário -->
+        <hr> Formulário Conjugue: <input type="text" id="conjugue" name="conjugue"><br><br> Formulário Mãe: <input type="text" id="mae" name="mae"><br><br>
+
+        <!-- Dependentes -->
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="tipo"><strong>Informe parentesco</strong></label>
+                    <select id="tipo" name="tipo" class="form-control" required onchange="changeSelect();">
+								<option value="">Selecione</option>
+								<option value="conjugue">conjugue</option>
+								<option value="mae">mae</option>
+							</select>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <!-- <div class="col-md-3">
+                <div class="form-group">
+                    <label for="desc"><strong>dependente conjugue</strong></label>
+                    <input type="text" id="conjugue2" name="conjugue2"><br>
+                </div>
+            </div> -->
+            <br><br>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="desc"><strong>dependente mãe</strong></label>
+                    <input type="text" id="mae2" name="mae2"><br>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Fim da Página -->
+
+        <script src="js/listpopper.js"></script>
+
+</body>
+
+</html>
