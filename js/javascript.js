@@ -2,114 +2,164 @@ const add = document.getElementById("add");
 const childrenContent = document.getElementById("content-children");
 const formPersonalData = document.getElementById("formPersonalData");
 
-function turnUpperCase(event) {
-    console.log(event.target);
-
-    if (event.target.value === "" || !event.target.getAttribute("id") === "cpf") {
-        event.target.setAttribute("style", "text-transform: uppercase");
-    } else if (!event.target.getAttribute("id") === "cpf") {
-        event.target.setAttribute("style", "text-transform: capitalize");
-    }
-
-    //	event.target.setAttribute("style", "text-transform: lowercase");
-}
-formPersonalData.addEventListener("click", turnUpperCase);
-
 function addNewInputChildren(e) {
     e.preventDefault();
 
-    let count = parseInt(childrenContent.getAttribute("count")) + 1;
-    const space = document.createElement("br");
+    let count = childrenContent.children.length;
+    // let comboEscolaridade = document.getElementById("CboEscolaridade");
 
-    // label name
+    const section = document.createElement("section");
 
-    const newChildrenLabel = document.createElement("label");
-    newChildrenLabel.setAttribute("for", "nome_filho" + count);
-    newChildrenLabel.innerHTML = "Nome do Filho";
+    // nome filho
+    const DivNomeFilho = document.createElement("div");
+    DivNomeFilho.className = "col-md-5";
+    const LabelNomeFilho = document.createElement("label");
+    LabelNomeFilho.setAttribute("for", "nome_filho" + count);
+    LabelNomeFilho.innerHTML = "Nome do Filho";
+    const InputNomeFilho = document.createElement("input");
+    InputNomeFilho.setAttribute("type", "text");
+    InputNomeFilho.setAttribute("class", "form-control");
+    InputNomeFilho.setAttribute("id", "nome_filho" + count);
+    InputNomeFilho.setAttribute("name", `nome_filho[${count}]`);
+    DivNomeFilho.appendChild(LabelNomeFilho);
+    DivNomeFilho.appendChild(InputNomeFilho);
 
-    // input name
+    // data nascimento
+    const DivDataNasc = document.createElement("div");
+    DivDataNasc.className = "col-md-3";
+    const LabelDataNasc = document.createElement("label");
+    LabelDataNasc.setAttribute("for", "nasc_filho" + count + "BornDate");
+    LabelDataNasc.innerHTML = "Data Nasc";
+    const InputDataNasc = document.createElement("input");
+    InputDataNasc.setAttribute("class", "form-control");
+    InputDataNasc.setAttribute("type", "date");
+    InputDataNasc.setAttribute("id", "nasc_filho" + count + "BornDate");
+    InputDataNasc.setAttribute("name", `nome_filho[${count}]`);
+    DivDataNasc.appendChild(LabelDataNasc);
+    DivDataNasc.appendChild(InputDataNasc);
 
-    const newChildren = document.createElement("input");
-    newChildren.setAttribute("type", "text");
-    newChildren.setAttribute("class", "form-control");
-    newChildren.setAttribute("id", "nome_filho" + count);
-    newChildren.setAttribute("name", "nome_filho[]" + count);
+    // escolaridade
+    const DivEscolaridade = document.createElement("div");
+    DivEscolaridade.className = "col-md-4";
+    const LabelEscolaridade = document.createElement("label");
+    LabelEscolaridade.setAttribute("for", "escolaridade" + count);
+    LabelEscolaridade.innerHTML = "Escolaridade";
+    const SelectEscolaridade = document.createElement("select");
+    SelectEscolaridade.setAttribute("select", "name");
+    SelectEscolaridade.setAttribute("class", "form-control");
+    SelectEscolaridade.setAttribute("id", "escolaridade" + count);
+    SelectEscolaridade.setAttribute("name", `escolaridade[${count}]`);
+    DivEscolaridade.appendChild(LabelEscolaridade);
+    DivEscolaridade.appendChild(SelectEscolaridade);
 
-    // label date
+    // for (i = 0; i < comboEscolaridade.length; i = i + 1) {
+    //     console.log(comboEscolaridade.options[i]);
+    // }
 
-    const newChildrenDateLabel = document.createElement("label");
-    newChildrenDateLabel.setAttribute("for", "nasc_filho" + count + "BornDate");
-    newChildrenDateLabel.innerHTML = "Data de Nasc";
+    // <
+    // input type = "button"
+    // id = "btnCarregar"
+    // value = "Carregar combobox" / > ;
 
-    // input born date
+    // document.getElementById("btnCarregar").onclick = function() {
+    //     var comboEscolaridade = document.getElementById("CboEscolaridade");
 
-    const newChildrenBornDate = document.createElement("input");
-    newChildrenBornDate.setAttribute("class", "form-control");
-    newChildrenBornDate.setAttribute("type", "date");
-    newChildrenBornDate.setAttribute("id", "nasc_filho" + count + "BornDate");
-    newChildrenBornDate.setAttribute("name", "nasc_filho[]" + count);
+    //     var opt0 = document.createElement("option");
+    //     opt0.value = "";
+    //     opt0.text = "Selecione";
+    //     comboEscolaridade.add(opt0, comboEscolaridade.options[0]);
 
-    // label escolaridade
+    //     var opt1 = document.createElement("option");
+    //     opt1.value = "2GC";
+    //     opt1.text = "Segundo Grau Completo";
+    //     comboEscolaridade.add(opt1, comboEscolaridade.options[1]);
 
-    const newChildrenEscolaLabel = document.createElement("label");
-    newChildrenEscolaLabel.setAttribute("for", "escolaridade" + count);
-    newChildrenEscolaLabel.innerHTML = "Escolaridade";
+    //     var opt2 = document.createElement("option");
+    //     opt2.value = "2GI";
+    //     opt2.text = "Segundo Grau Incompleto";
+    //     comboEscolaridade.add(opt2, comboEscolaridade.options[2]);
 
-    // input escolaridade
+    //     var opt3 = document.createElement("option");
+    //     opt3.value = "CTC";
+    //     opt3.text = "Curso Técnico Completo";
+    //     comboEscolaridade.add(opt3, comboEscolaridade.options[3]);
 
-    const newChildrenEscola = document.createElement("select");
-    newChildrenEscola.setAttribute("select", "name");
-    newChildrenEscola.setAttribute("class", "form-control");
-    newChildrenEscola.setAttribute("id", "escolaridade" + count);
-    newChildrenEscola.setAttribute("name", "escolaridade[]" + count);
+    //     var opt4 = document.createElement("option");
+    //     opt4.value = "CTI";
+    //     opt4.text = "Curso Técnico Incompleto";
+    //     comboEscolaridade.add(opt4, comboEscolaridade.options[4]);
 
-    // label dependente
+    //     var opt5 = document.createElement("option");
+    //     opt5.value = "NSC";
+    //     opt5.text = "Nível Superior Completo";
+    //     comboEscolaridade.add(opt5, comboEscolaridade.options[5]);
 
-    const newChildrenDependenteLabel = document.createElement("label");
-    newChildrenDependenteLabel.setAttribute("for", "dependente" + count);
-    newChildrenDependenteLabel.innerHTML = "Dependente";
+    //     var opt6 = document.createElement("option");
+    //     opt6.value = "NSI";
+    //     opt6.text = "Nível Superior Incompleto";
+    //     comboEscolaridade.add(opt6, comboEscolaridade.options[6]);
 
-    // input dependente
+    //     var opt7 = document.createElement("option");
+    //     opt7.value = "PGC";
+    //     opt7.text = "Pós Graduação Completo";
+    //     comboEscolaridade.add(opt7, comboEscolaridade.options[7]);
 
-    const newChildrenDependente = document.createElement("select");
-    newChildrenDependente.setAttribute("select", "name");
-    newChildrenDependente.setAttribute("class", "form-control");
-    newChildrenDependente.setAttribute("id", "dependente" + count);
-    newChildrenDependente.setAttribute("name", "dependente[]" + count);
+    //     var opt8 = document.createElement("option");
+    //     opt8.value = "PGI";
+    //     opt8.text = "Pós Graduação Incompleto";
+    //     comboEscolaridade.add(opt8, comboEscolaridade.options[8]);
+    // };
+    ///////////////////////////////////////////////////
+    // function atualizouSelect() {
+    //     let select = document.querySelector("#cboDependente");
+    //     let optionValue = select.option[select.selectedIndex];
 
-    // label imposto de renda
+    //     let value = optionValue.value;
+    //     let text = optionValue.text;
 
-    const newChildrenIrLabel = document.createElement("label");
-    newChildrenIrLabel.setAttribute("for", "ir" + count);
-    newChildrenIrLabel.innerHTML = "Para Fins I.R.";
+    //     console.log(value, text);
+    // }
 
-    // input imposto de renda
+    // atualizouSelect();
 
-    const newChildrenIr = document.createElement("select");
-    newChildrenIr.setAttribute("select", "name");
-    newChildrenIr.setAttribute("class", "form-control");
-    newChildrenIr.setAttribute("id", "ir" + count);
-    newChildrenIr.setAttribute("name", "ir[]" + count);
+    // dependente
+    const DivDependente = document.createElement("div");
+    DivDependente.className = "col-md-4";
+    // DivDependente.insertAdjacentHTML("beforeend", "<br></br>");
+    const LabelDependente = document.createElement("label");
+    LabelDependente.setAttribute("for", "dependente" + count);
+    LabelDependente.innerHTML = "Dependente";
+    const SelectDependente = document.createElement("select");
+    SelectDependente.setAttribute("select", "name");
+    SelectDependente.setAttribute("class", "form-control");
+    SelectDependente.setAttribute("id", "dependente" + count);
+    SelectDependente.setAttribute("name", `dependente[${count}]`);
+    DivDependente.appendChild(LabelDependente);
+    DivDependente.appendChild(SelectDependente);
 
-    // adds
+    // I.R.
+    const DivFir = document.createElement("div");
+    DivFir.className = "col-md-4";
+    // DivFir.insertAdjacentHTML("beforeend", "<br></br>");
+    const LabelFir = document.createElement("label");
+    LabelFir.setAttribute("for", "fir" + count);
+    LabelFir.innerHTML = "Fins para I.R.:";
+    const SelectFir = document.createElement("select");
+    SelectFir.setAttribute("select", "name");
+    SelectFir.setAttribute("class", "form-control");
+    SelectFir.setAttribute("id", "fir" + count);
+    SelectFir.setAttribute("name", `fir[${count}]`);
+    DivFir.appendChild(LabelFir);
+    DivFir.appendChild(SelectFir);
 
-    childrenContent.appendChild(space);
-    childrenContent.appendChild(space);
-    childrenContent.appendChild(space);
-    childrenContent.appendChild(newChildrenLabel);
-    childrenContent.appendChild(space);
-    childrenContent.appendChild(newChildren);
-    childrenContent.appendChild(newChildrenDateLabel);
-    childrenContent.appendChild(space);
-    childrenContent.appendChild(newChildrenBornDate);
-    childrenContent.appendChild(newChildrenEscolaLabel);
-    childrenContent.appendChild(space);
-    childrenContent.appendChild(newChildrenEscola);
-    childrenContent.appendChild(newChildrenDependenteLabel);
-    childrenContent.appendChild(newChildrenDependente);
-    childrenContent.appendChild(newChildrenIrLabel);
-    childrenContent.appendChild(newChildrenIr);
-    childrenContent.setAttribute("count", count);
+    [DivNomeFilho, DivDataNasc, DivEscolaridade, DivDependente, DivFir].map(
+        (item) => {
+            section.appendChild(item);
+        }
+    );
+    section.style.cssText =
+        "display:flex; flex-direction: row; flex-wrap: wrap; width:100%;";
+    childrenContent.appendChild(section);
 }
 
 add.addEventListener("click", addNewInputChildren);
